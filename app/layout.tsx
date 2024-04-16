@@ -1,9 +1,8 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import Link from "next/link";
 import Navbar from "./Navbar";
-import { Suspense } from "react";
+import { EdgeStoreProvider } from "./lib/edgestore";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,7 +20,9 @@ export default function RootLayout({
     <html lang="en" data-theme="winter">
       <body className={inter.className}>
         <Navbar />
-        <main className="p-5">{children}</main>
+        <main className="p-5">
+          <EdgeStoreProvider>{children}</EdgeStoreProvider>
+        </main>
       </body>
     </html>
   );
